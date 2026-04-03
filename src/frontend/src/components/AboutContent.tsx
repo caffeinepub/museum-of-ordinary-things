@@ -340,8 +340,8 @@ function ClickablePhoto({
 // ─── Life Stories fragments ────────────────────────────────────────────────
 
 const lifeFragments = [
-  "grew up reading manhwa — visual storytelling as first language",
-  "Heath Ledger's Joker taught me what committed performance looks like",
+  "grew up reading manhwa — i genuinely wish it was my full-time job",
+  "Heath Ledger is my forever crush. no further explanation needed.",
   "stories live in objects. in the ordinary.",
   "always in the middle of three notebooks at once",
 ];
@@ -410,7 +410,7 @@ function LifeStoriesPanel() {
 
 // ─── Music archive ───────────────────────────────────────────────────────────
 
-const albums = [
+const _albums = [
   { title: "In Rainbows", artist: "Radiohead", bg: "#C5D5C5", rotate: "-3deg" },
   { title: "OK Computer", artist: "Radiohead", bg: "#F2C4CE", rotate: "2deg" },
   { title: "Bewitched", artist: "Laufey", bg: "#F7D9E0", rotate: "-1.5deg" },
@@ -455,86 +455,201 @@ function MusicArchive() {
       >
         currently playing ♫
       </div>
+      <div style={{ position: "relative", display: "inline-block" }}>
+        <img
+          src="/assets/generated/album-covers-grid.dim_600x320.jpg"
+          alt="album covers collage"
+          style={{
+            width: "100%",
+            maxWidth: "480px",
+            borderRadius: "4px",
+            transform: "rotate(-0.5deg)",
+            boxShadow: "3px 5px 16px rgba(61,43,43,0.14)",
+            display: "block",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "-8px",
+            left: "30%",
+            width: "50px",
+            height: "16px",
+            background: "rgba(230,215,190,0.7)",
+            borderRadius: "2px",
+            transform: "rotate(-1.5deg)",
+          }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Reddit-style stories section ────────────────────────────────────────────
+
+function RedditStories() {
+  return (
+    <motion.div
+      style={{
+        background: "rgba(255,248,240,0.95)",
+        border: "1px solid rgba(212,132,154,0.22)",
+        borderRadius: "8px",
+        maxWidth: "500px",
+        padding: "0",
+        overflow: "hidden",
+        boxShadow: "2px 4px 12px rgba(61,43,43,0.1)",
+        marginTop: "1.8rem",
+      }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8, duration: 0.5 }}
+    >
+      {/* Reddit-style header bar */}
       <div
         style={{
+          background: "rgba(242,196,206,0.22)",
+          borderBottom: "1px solid rgba(212,132,154,0.15)",
+          padding: "8px 14px",
           display: "flex",
-          flexWrap: "wrap",
-          gap: "10px",
-          alignItems: "flex-start",
+          alignItems: "center",
+          gap: "8px",
         }}
       >
-        {albums.map((album, i) => (
-          <motion.div
-            key={album.title}
+        <div
+          style={{
+            width: "20px",
+            height: "20px",
+            borderRadius: "50%",
+            background: "rgba(212,132,154,0.3)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "11px",
+            color: "#D4849A",
+            fontWeight: 700,
+          }}
+        >
+          ↑
+        </div>
+        <span
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "11px",
+            color: "#9DB89D",
+            fontWeight: 600,
+            letterSpacing: "0.04em",
+          }}
+        >
+          r/studentlife
+        </span>
+        <span
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "10px",
+            color: "rgba(61,43,43,0.38)",
+          }}
+        >
+          · posted at 2am obviously · u/shreetia
+        </span>
+      </div>
+
+      {/* Post body */}
+      <div style={{ padding: "14px 16px 12px" }}>
+        {/* Post title */}
+        <div
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "13px",
+            fontWeight: 700,
+            color: "#3D2B2B",
+            marginBottom: "10px",
+            lineHeight: 1.35,
+          }}
+        >
+          the museum was not supposed to be a real thing but here we are
+        </div>
+
+        {/* Post content */}
+        <div
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "12px",
+            color: "#5a4040",
+            lineHeight: 1.8,
+          }}
+        >
+          <p style={{ marginBottom: "8px" }}>
+            okay so i was just trying to write about my grandmother's old
+            kitchen tin and now somehow i have an entire research project about
+            "the social memory of domestic objects." i don't know how this
+            happened. i don't ask questions anymore.
+          </p>
+          <p style={{ marginBottom: "8px" }}>
+            also currently on my 4th manhwa this week. no i am not okay. yes i
+            did cancel plans for this. the plot physically needed me there. i
+            have responsibilities.
+          </p>
+          <p>
+            anyway if you see me in the library staring at a spoon like it
+            contains the secrets of the universe — yes that is on purpose. it's
+            called fieldwork.
+          </p>
+        </div>
+
+        {/* Reddit-style footer */}
+        <div
+          style={{
+            display: "flex",
+            gap: "14px",
+            alignItems: "center",
+            marginTop: "12px",
+          }}
+        >
+          <div
             style={{
-              width: "82px",
-              minHeight: "62px",
-              background: album.bg,
-              borderRadius: "3px",
-              padding: "6px 7px",
-              transform: `rotate(${album.rotate})`,
-              boxShadow: "2px 3px 8px rgba(61,43,43,0.14)",
-              cursor: "default",
-              flexShrink: 0,
-            }}
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.75 + i * 0.07, duration: 0.3 }}
-            whileHover={{
-              scale: 1.08,
-              rotate: 0,
-              boxShadow: "4px 6px 16px rgba(61,43,43,0.2)",
-              zIndex: 10,
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+              background: "rgba(197,213,197,0.22)",
+              padding: "3px 10px",
+              borderRadius: "20px",
             }}
           >
-            {/* Mini vinyl circle */}
-            <div
-              style={{
-                width: "22px",
-                height: "22px",
-                borderRadius: "50%",
-                border: "2px solid rgba(61,43,43,0.2)",
-                margin: "0 auto 5px",
-                background: "rgba(61,43,43,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+            <span
+              style={{ fontSize: "11px", color: "#9DB89D", fontWeight: 700 }}
             >
-              <div
-                style={{
-                  width: "5px",
-                  height: "5px",
-                  borderRadius: "50%",
-                  background: "rgba(61,43,43,0.3)",
-                }}
-              />
-            </div>
-            <div
+              ↑
+            </span>
+            <span
               style={{
                 fontFamily: "Inter, sans-serif",
-                fontSize: "8px",
-                fontWeight: 700,
-                color: "#3D2B2B",
-                lineHeight: 1.3,
-                marginBottom: "2px",
-                wordBreak: "break-word",
+                fontSize: "11px",
+                color: "#9DB89D",
+                fontWeight: 600,
               }}
             >
-              {album.title}
-            </div>
-            <div
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontSize: "7px",
-                color: "rgba(61,43,43,0.6)",
-                lineHeight: 1.2,
-              }}
-            >
-              {album.artist}
-            </div>
-          </motion.div>
-        ))}
+              1.2k
+            </span>
+          </div>
+          <span
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11px",
+              color: "rgba(61,43,43,0.42)",
+            }}
+          >
+            💬 3 comments
+          </span>
+          <span
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11px",
+              color: "rgba(61,43,43,0.42)",
+            }}
+          >
+            🔖 save
+          </span>
+        </div>
       </div>
     </motion.div>
   );
@@ -910,7 +1025,10 @@ export function AboutContent() {
             alignItems: "flex-start",
           }}
         >
-          <LifeStoriesPanel />
+          <div style={{ flex: 1, minWidth: "260px" }}>
+            <LifeStoriesPanel />
+            <RedditStories />
+          </div>
           <div style={{ flex: 1, minWidth: "260px" }}>
             <MusicArchive />
           </div>

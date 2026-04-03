@@ -711,16 +711,17 @@ export function ContactContent() {
                 {/* Email */}
                 <motion.a
                   href="mailto:shreetiagarwal82@gmail.com"
-                  className="font-serif"
+                  className=""
                   style={{
-                    fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
+                    fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
                     fontWeight: 600,
                     color: "#3D2B2B",
                     textDecoration: "none",
                     display: "block",
                     marginBottom: "1.4rem",
                     lineHeight: 1.3,
-                    fontFamily: "'PrettyOnTheInside', cursive",
+                    fontFamily: "Inter, Helvetica, sans-serif",
+                    letterSpacing: "0.01em",
                   }}
                   whileHover={{ letterSpacing: "0.04em", color: "#EBBEC8" }}
                   transition={{ duration: 0.2 }}
@@ -771,26 +772,54 @@ export function ContactContent() {
                     gap: "10px",
                   }}
                 >
-                  <div
+                  <motion.a
+                    href="https://www.instagram.com/spillshreetea"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-handwritten"
                     style={{
                       fontSize: "1rem",
-                      color: "rgba(61,43,43,0.38)",
+                      color: "#6a5a55",
                       fontStyle: "italic",
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
                     }}
+                    whileHover={{ color: "#D4849A", x: 3 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    instagram — add later
-                  </div>
-                  <div
+                    <span style={{ fontSize: "13px", opacity: 0.7 }}>◎</span>
+                    instagram — @spillshreetea
+                  </motion.a>
+                  <motion.a
+                    href="https://www.linkedin.com/in/shreeti-agrawal-8799ba382"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-handwritten"
                     style={{
                       fontSize: "1rem",
-                      color: "rgba(61,43,43,0.38)",
+                      color: "#6a5a55",
                       fontStyle: "italic",
+                      textDecoration: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
                     }}
+                    whileHover={{ color: "#D4849A", x: 3 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    linkedin — add later
-                  </div>
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        opacity: 0.7,
+                      }}
+                    >
+                      in
+                    </span>
+                    linkedin — Shreeti Agrawal
+                  </motion.a>
                 </div>
 
                 {/* Closing */}

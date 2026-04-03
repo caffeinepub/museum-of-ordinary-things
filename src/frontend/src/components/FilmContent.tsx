@@ -458,7 +458,7 @@ function LetterboxdBlock() {
 
       {/* Tags */}
       <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-        {["documentary", "craft", "culture", "Rajasthan", "2025"].map((tag) => (
+        {["documentary", "craft", "culture", "Varanasi", "2025"].map((tag) => (
           <span
             key={tag}
             className="font-typewriter"
@@ -879,7 +879,7 @@ export function FilmContent() {
                 }}
               />
               <iframe
-                src="https://www.youtube.com/embed/placeholder"
+                src="https://www.youtube.com/embed/WWrTcFPMftE"
                 title="Gulabi Meenakari Documentary"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -926,7 +926,7 @@ export function FilmContent() {
                   ease: "easeInOut",
                 }}
               >
-                2025 · Rajasthan
+                2025 · Varanasi
               </motion.div>
               <motion.div
                 className="font-typewriter"

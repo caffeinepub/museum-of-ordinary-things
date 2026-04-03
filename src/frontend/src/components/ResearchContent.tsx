@@ -255,6 +255,232 @@ function BinderRings({ color = "rgba(157,184,157,0.65)" }: { color?: string }) {
   );
 }
 
+// ─── Physical Book component ─────────────────────────────────────────────────
+
+function PhysicalBook({
+  title,
+  spineColor,
+  coverColor,
+  contentLines,
+  rotateStyle = "0deg",
+  delay = 0,
+}: {
+  title: string;
+  spineColor: string;
+  coverColor: string;
+  contentLines: string[];
+  rotateStyle?: string;
+  delay?: number;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.5 }}
+      style={{ transform: `rotate(${rotateStyle})` }}
+    >
+      <button
+        type="button"
+        aria-label={`Open ${title}`}
+        onClick={() => setIsOpen(!isOpen)}
+        style={{
+          cursor: "pointer",
+          userSelect: "none",
+          background: "none",
+          border: "none",
+          padding: 0,
+          textAlign: "left",
+        }}
+      >
+        <div
+          style={{
+            perspective: "800px",
+            width: isOpen ? "380px" : "200px",
+            transition: "width 0.4s ease",
+          }}
+        >
+          {/* Book wrapper */}
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              height: "268px",
+            }}
+          >
+            {/* Spine */}
+            <div
+              style={{
+                width: "32px",
+                height: "268px",
+                background: spineColor,
+                borderRadius: "4px 0 0 4px",
+                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow:
+                  "inset -3px 0 8px rgba(0,0,0,0.12), 2px 0 6px rgba(0,0,0,0.1)",
+              }}
+            >
+              <span
+                style={{
+                  writingMode: "vertical-rl",
+                  fontSize: "9px",
+                  letterSpacing: "0.14em",
+                  color: "rgba(255,255,255,0.85)",
+                  fontFamily: "Inter, Helvetica, sans-serif",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  transform: "rotate(180deg)",
+                }}
+              >
+                {title.split(" ")[0]}
+              </span>
+            </div>
+
+            {/* Cover — animates open */}
+            <motion.div
+              animate={{ rotateY: isOpen ? -140 : 0 }}
+              transition={{ duration: 0.55, ease: "easeInOut" }}
+              style={{
+                width: "170px",
+                height: "268px",
+                background: coverColor,
+                borderRadius: "0 6px 6px 0",
+                transformOrigin: "left center",
+                transformStyle: "preserve-3d",
+                position: "relative",
+                boxShadow: "3px 4px 16px rgba(61,43,43,0.18)",
+                flexShrink: 0,
+              }}
+            >
+              {/* Cover front face */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  padding: "22px 16px",
+                  backfaceVisibility: "hidden",
+                }}
+              >
+                {/* Decorative band */}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "3px",
+                    background: "rgba(61,43,43,0.12)",
+                    marginBottom: "14px",
+                  }}
+                />
+                <div
+                  style={{
+                    fontFamily: "Inter, Helvetica, sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    color: "#3D2B2B",
+                    lineHeight: 1.35,
+                    marginBottom: "8px",
+                  }}
+                >
+                  {title}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "9px",
+                    color: "rgba(61,43,43,0.45)",
+                    letterSpacing: "0.08em",
+                    marginBottom: "14px",
+                  }}
+                >
+                  Shreeti Agrawal
+                </div>
+                {/* Cover texture lines */}
+                {[0, 1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: `${60 - i * 10}%`,
+                      height: "1px",
+                      background: "rgba(61,43,43,0.08)",
+                      marginBottom: "8px",
+                    }}
+                  />
+                ))}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "16px",
+                    left: "16px",
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "9px",
+                    color: "rgba(61,43,43,0.38)",
+                    fontStyle: "italic",
+                  }}
+                >
+                  click to open ↗
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Inner pages — visible when open */}
+            <div
+              style={{
+                position: "absolute",
+                left: "32px",
+                top: "4px",
+                width: "166px",
+                height: "260px",
+                background: "#FFFDF7",
+                borderRadius: "0 5px 5px 0",
+                padding: "16px 14px",
+                boxSizing: "border-box",
+                backgroundImage:
+                  "repeating-linear-gradient(transparent, transparent 22px, rgba(180,180,180,0.13) 22px, rgba(180,180,180,0.13) 23px)",
+                boxShadow: "inset 0 0 8px rgba(61,43,43,0.04)",
+                overflowY: "auto",
+                zIndex: -1,
+              }}
+            >
+              {contentLines.map((line, i) => (
+                <div
+                  key={`${i}-${line.slice(0, 10)}`}
+                  style={{
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: "9.5px",
+                    color: line.startsWith("[") ? "#9DB89D" : "#3D2B2B",
+                    lineHeight: 2.4,
+                    fontStyle: line.startsWith("—") ? "italic" : "normal",
+                    opacity: line.startsWith("[") ? 0.7 : 0.85,
+                  }}
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Caption */}
+        <div
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "10px",
+            color: "#9DB89D",
+            textAlign: "center",
+            marginTop: "8px",
+            letterSpacing: "0.06em",
+          }}
+        >
+          {isOpen ? "click to close ↙" : "click to open ↗"}
+        </div>
+      </button>
+    </motion.div>
+  );
+}
+
 // ─── Research Journal ───────────────────────────────────────────────────
 
 const researchPlaceholders = [
@@ -263,7 +489,7 @@ const researchPlaceholders = [
   { id: 3, label: "Research Notes", hint: "annotated bibliography" },
 ];
 
-function ResearchJournal() {
+function _ResearchJournal() {
   return (
     <motion.div
       style={{
@@ -338,7 +564,7 @@ function ResearchJournal() {
                 color: "#3D2B2B",
               }}
             >
-              RESEARCH JOURNAL
+              research journal
             </span>
           </div>
 
@@ -536,7 +762,7 @@ const essayPlaceholders = [
   { id: 3, label: "what objects remember", hint: "personal essay" },
 ];
 
-function EssaysJournal() {
+function _EssaysJournal() {
   return (
     <motion.div
       style={{
@@ -826,7 +1052,7 @@ export function ResearchContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          WRITING & RESEARCH
+          writing & research
         </motion.h2>
         <div
           className="font-handwritten"
@@ -849,8 +1075,50 @@ export function ResearchContent() {
             alignItems: "flex-start",
           }}
         >
-          <ResearchJournal />
-          <EssaysJournal />
+          <PhysicalBook
+            title="Research Journal"
+            spineColor="#9DB89D"
+            coverColor="#C5D5C5"
+            contentLines={[
+              "Research Topic: ___________",
+              "Date: _____ / _____ / _____",
+              "Hypothesis: _____________",
+              "",
+              "[ PDF will be uploaded here ]",
+              "",
+              "— observations & data",
+              "— annotated bibliography",
+              "",
+              "[ Field Study — add later ]",
+              "",
+              "diagram →",
+              "analysis ↓",
+            ]}
+            rotateStyle="-1.5deg"
+            delay={0.1}
+          />
+          <PhysicalBook
+            title="Essays & Poems"
+            spineColor="#D4849A"
+            coverColor="#F2C4CE"
+            contentLines={[
+              "___ — a poem about home",
+              "",
+              "on belonging",
+              "— essay draft",
+              "",
+              "what objects remember",
+              "— personal essay",
+              "",
+              "[ PDF will be uploaded here ]",
+              "",
+              "fragments, 2024",
+              "— soft things,",
+              "  carefully held",
+            ]}
+            rotateStyle="1.8deg"
+            delay={0.22}
+          />
         </div>
 
         {/* Footer label */}

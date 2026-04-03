@@ -463,8 +463,8 @@ function MuseumFlipCard() {
     <div
       style={{
         perspective: "900px",
-        width: "clamp(180px, 26vw, 260px)",
-        minHeight: "300px",
+        width: "clamp(280px, 38vw, 380px)",
+        minHeight: "380px",
       }}
       data-ocid="projects.item.3"
     >
@@ -472,7 +472,7 @@ function MuseumFlipCard() {
         style={{
           position: "relative",
           width: "100%",
-          minHeight: "300px",
+          minHeight: "380px",
           transformStyle: "preserve-3d",
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           transition: "transform 0.55s cubic-bezier(0.4,0,0.2,1)",
@@ -717,7 +717,7 @@ function ProjectCard({
           ? "0 16px 40px rgba(0,0,0,0.22), 0 4px 12px rgba(0,0,0,0.12)"
           : "3px 5px 16px rgba(61,43,43,0.14)",
         transform: `rotate(${project.rotate})`,
-        width: "clamp(170px, 22vw, 240px)",
+        width: "clamp(155px, 17vw, 195px)",
         position: "relative",
         flexShrink: 0,
       }}
@@ -929,7 +929,7 @@ export function ProjectsContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            PROJECT FILES
+            project files
           </motion.h2>
           <div
             className="font-handwritten absolute"
@@ -1031,30 +1031,39 @@ export function ProjectsContent() {
           />
         </motion.svg>
 
-        {/* Cards row — flex wrap so all 3 are visible */}
+        {/* Cards row — Museum is center/largest, others on sides */}
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "clamp(1.5rem, 3vw, 2.5rem)",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
+            gap: "clamp(1rem, 2vw, 1.8rem)",
+            alignItems: "center",
+            justifyContent: "center",
             paddingTop: "1.5rem",
             paddingBottom: "2rem",
           }}
         >
-          {regularProjects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
-          ))}
-          {/* Flip card for Museum */}
+          {/* These Two Cents — small, left */}
+          <ProjectCard
+            key={regularProjects[0].title}
+            project={regularProjects[0]}
+            index={0}
+          />
+          {/* Museum of Ordinary Things — large, center */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.36, duration: 0.5 }}
-            style={{ transform: "rotate(-1deg)" }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            style={{ transform: "rotate(-1deg)", zIndex: 2 }}
           >
             <MuseumFlipCard />
           </motion.div>
+          {/* Glow & Grow — small, right */}
+          <ProjectCard
+            key={regularProjects[1].title}
+            project={regularProjects[1]}
+            index={1}
+          />
         </div>
 
         {/* Binder rings strip */}
