@@ -1,0 +1,511 @@
+/* All @import rules must come first */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
+
+/* ─── Custom Fonts (self-hosted) ──────────────────────────────────────────── */
+@font-face {
+  font-family: "PrettyOnTheInside";
+  src: url("/assets/fonts/PrettyOnTheInside.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hipnotik";
+  src: url("/assets/fonts/HipnOtik.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Parisienne fills the Jheri Curls slot until the font file is provided */
+@font-face {
+  font-family: "JheriCurls";
+  src: url("/assets/fonts/Parisienne.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PinyonScript";
+  src: url("/assets/fonts/PinyonScript-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  --soft-pink: #f2c4ce;
+  --muted-pink: #e8b4c0;
+  --dusty-pink: #ebbec8;
+  --pale-pink: #f7d9e0;
+  --sage-green: #c5d5c5;
+  --muted-sage: #a8c4a0;
+  --warm-sage: #b8cdb8;
+  --deep-sage: #9db89d;
+  --warm-beige: #f5ede0;
+  --cream: #fff8f0;
+  --muted-beige: #ede3d4;
+  --soft-beige: #faf6ef;
+  --text-brown: #3d2b2b;
+  --tape-color: rgba(230, 215, 190, 0.72);
+
+  --background: 0.971 0.012 72;
+  --foreground: 0.22 0.028 20;
+  --card: 0.982 0.008 74;
+  --card-foreground: 0.22 0.028 20;
+  --popover: 0.982 0.008 74;
+  --popover-foreground: 0.22 0.028 20;
+  --primary: 0.72 0.08 5;
+  --primary-foreground: 0.98 0.005 75;
+  --secondary: 0.86 0.06 150;
+  --secondary-foreground: 0.28 0.025 34;
+  --muted: 0.94 0.018 68;
+  --muted-foreground: 0.55 0.025 34;
+  --accent: 0.88 0.055 10;
+  --accent-foreground: 0.25 0.025 34;
+  --destructive: 0.62 0.17 22;
+  --destructive-foreground: 0.98 0.003 0;
+  --border: 0.88 0.025 64;
+  --input: 0.92 0.018 64;
+  --ring: 0.72 0.08 5;
+  --radius: 0.4rem;
+  --chart-1: 0.72 0.08 5;
+  --chart-2: 0.78 0.08 150;
+  --chart-3: 0.85 0.04 72;
+  --chart-4: 0.68 0.06 30;
+  --chart-5: 0.8 0.06 120;
+  --sidebar: 0.971 0.012 72;
+  --sidebar-foreground: 0.22 0.028 20;
+  --sidebar-primary: 0.72 0.08 5;
+  --sidebar-primary-foreground: 0.98 0.005 75;
+  --sidebar-accent: 0.86 0.06 150;
+  --sidebar-accent-foreground: 0.28 0.025 34;
+  --sidebar-border: 0.88 0.025 64;
+  --sidebar-ring: 0.72 0.08 5;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #3d2b2b;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Hipnotik", sans-serif;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ─── Font Utilities ────────────────────────────────────────────────────── */
+@layer utilities {
+  .font-script {
+    font-family: "PrettyOnTheInside", cursive;
+  }
+  .font-pinyon {
+    font-family: "PinyonScript", cursive;
+  }
+  .font-display {
+    font-family: "Hipnotik", sans-serif;
+    letter-spacing: 0.06em;
+  }
+  .font-expressive {
+    font-family: "JheriCurls", cursive;
+  }
+  .font-body {
+    font-family: "Inter", "Helvetica Neue", Helvetica, sans-serif;
+  }
+  .font-handwritten {
+    font-family: "JheriCurls", cursive;
+  }
+  .font-typewriter {
+    font-family: "Courier New", "Courier", monospace;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ─── Folder tab label — Hipnotik ─────────────────────────────────────── */
+.folder-tab-label {
+  font-family: "Hipnotik", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--float-rotate, 0deg));
+  }
+}
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-6px) translateX(3px);
+  }
+  66% {
+    transform: translateY(-3px) translateX(-4px);
+  }
+}
+@keyframes sparkle-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+@keyframes stamp-thud {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.18) rotate(5deg);
+  }
+  60% {
+    transform: scale(0.93) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+@keyframes draw-circle {
+  from {
+    stroke-dashoffset: 500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes tape-peel {
+  0%,
+  100% {
+    transform: rotate(var(--tape-rotate, -2deg)) scaleY(1);
+  }
+  50% {
+    transform: rotate(var(--tape-rotate, -2deg)) scaleY(0.82) translateY(-3px);
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes folder-lift {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) rotate(1deg) scale(1.05);
+  }
+}
+@keyframes tape-lift {
+  0% {
+    transform: var(--tape-transform, rotate(-2deg)) scaleY(1);
+  }
+  40% {
+    transform: var(--tape-transform, rotate(-2deg)) scaleY(0.7) translateY(-6px)
+      rotate(4deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: var(--tape-transform, rotate(-2deg)) scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+.animate-float-drift {
+  animation: float-drift 7s ease-in-out infinite;
+}
+.animate-sparkle {
+  animation: sparkle-in 1.5s ease-in-out infinite;
+}
+.animate-stamp {
+  animation: stamp-thud 0.4s ease-in-out;
+}
+.animate-wiggle {
+  animation: wiggle 0.6s ease-in-out;
+}
+.tape-lift-anim {
+  animation: tape-lift 0.5s ease-in-out;
+}
+
+/* ─── Paper / Grain Texture ─────────────────────────────────────────────── */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.09'/%3E%3C/svg%3E");
+}
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* ─── Fabric texture ─────────────────────────────────────────────────────── */
+.fabric-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.4 0.6' numOctaves='3' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ─── Tape Strip ─────────────────────────────────────────────────────────── */
+.tape-strip {
+  background: var(--tape-color);
+  height: 20px;
+  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 10;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.tape-strip:hover {
+  transform: translateX(-50%) rotate(2deg) scaleY(0.82) translateY(-3px);
+  opacity: 0.85;
+}
+
+/* ─── Paper Card ─────────────────────────────────────────────────────────── */
+.paper-card {
+  position: relative;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.paper-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: transparent transparent rgba(0, 0, 0, 0.09) transparent;
+  transition: border-width 0.22s ease;
+}
+.paper-card:hover::after {
+  border-width: 0 0 22px 22px;
+}
+.paper-card:hover {
+  transform: translateY(-5px) rotate(0.4deg);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+/* ─── Polaroid ───────────────────────────────────────────────────────────── */
+.polaroid {
+  background: #fffdf8;
+  padding: 10px 10px 36px;
+  box-shadow: 3px 5px 18px rgba(44, 35, 32, 0.22), 0 1px 4px
+    rgba(44, 35, 32, 0.1);
+  transition: transform 0.3s ease;
+}
+.polaroid:hover {
+  transform: scale(1.04) rotate(1.5deg);
+}
+
+/* ─── Lined paper ─────────────────────────────────────────────────────────── */
+.lined-paper {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(138, 117, 96, 0.14) 27px,
+    rgba(138, 117, 96, 0.14) 28px
+  );
+}
+
+/* ─── Book ring ──────────────────────────────────────────────────────────── */
+.book-ring {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #9db89d;
+  background: transparent;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* ─── Folder grid item ─────────────────────────────────────────────────────── */
+.folder-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* ─── Full-screen scroll ─────────────────────────────────────────────────── */
+.fullscreen-folder {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180, 150, 130, 0.35) transparent;
+}
+.fullscreen-folder::-webkit-scrollbar {
+  width: 5px;
+}
+.fullscreen-folder::-webkit-scrollbar-track {
+  background: transparent;
+}
+.fullscreen-folder::-webkit-scrollbar-thumb {
+  background: rgba(180, 150, 130, 0.45);
+  border-radius: 4px;
+}
+
+/* ─── Torn paper edge ─────────────────────────────────────────────────────── */
+.torn-edge-top {
+  position: relative;
+}
+.torn-edge-top::before {
+  content: "";
+  display: block;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 18' preserveAspectRatio='none'%3E%3Cpath d='M0 18 L0 8 Q30 0 60 8 Q90 16 120 6 Q150 0 180 10 Q210 18 240 8 Q270 0 300 9 Q330 16 360 5 Q390 0 420 11 Q450 18 480 7 Q510 0 540 10 Q570 18 600 6 Q630 0 660 12 Q690 18 720 7 Q750 0 780 9 Q810 16 840 5 Q870 0 900 11 Q930 18 960 8 Q990 0 1020 10 Q1050 16 1080 5 Q1110 0 1140 11 Q1170 18 1200 8 L1200 18 Z' fill='rgba(245,228,210,0.6)'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* ─── Soft beige paper background (homepage) ─────────────────────────────── */
+.paper-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #f5ecd8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.paper-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(180, 140, 100, 0.07) 100%
+  );
+}
+
+/* Legacy aliases kept for folder interior views */
+.rug-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #f5ecd8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+.rug-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+}
+
+/* ─── Page-flip corner ───────────────────────────────────────────────────── */
+.page-corner {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: border-width 0.2s ease;
+}
+.page-corner-left {
+  left: 0;
+  border-color: transparent transparent rgba(180, 155, 130, 0.45) transparent;
+}
+.page-corner-right {
+  right: 0;
+  border-color: transparent transparent rgba(180, 155, 130, 0.45) transparent;
+}
+.page-corner-right:hover {
+  border-width: 0 0 30px 30px;
+  cursor: pointer;
+}
+
+/* ─── Doodle hover wiggle ────────────────────────────────────────────────── */
+.doodle-hover:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* ─── Photo zoom overlay ─────────────────────────────────────────────────── */
+.photo-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 43, 43, 0.65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.photo-zoom-inner {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+/* ─── Sticky note ────────────────────────────────────────────────────────── */
+.sticky-note {
+  padding: 8px 12px;
+  border-radius: 2px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.12), inset 0 -2px 0
+    rgba(0, 0, 0, 0.06);
+  position: absolute;
+  font-family: "JheriCurls", cursive;
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+}
