@@ -1,5 +1,15 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import {
+  AntiquePaperFrame,
+  BotanicalSketch,
+  GoldFoilAccent,
+  HandwrittenAnnotation,
+  NewsPageFragment,
+  ReceiptStrip,
+  TicketStub,
+  WatercolorWash,
+} from "./ScrapbookDecorations";
 
 // ─── Shared micro-components ────────────────────────────────────────────────
 
@@ -541,6 +551,58 @@ export function FilmContent() {
             }}
           />
 
+          {/* ─── Scrapbook Decorations ─── */}
+          <WatercolorWash
+            color="rgba(201,168,76,0.12)"
+            style={{ top: "15%", left: "5%", zIndex: 0 }}
+          />
+          <TicketStub
+            label="GULABI SCREENING"
+            style={{
+              bottom: "10%",
+              right: "2%",
+              transform: "rotate(-8deg)",
+              opacity: 0.75,
+              zIndex: 3,
+            }}
+          />
+          <BotanicalSketch
+            size={90}
+            style={{ bottom: "8%", left: "2%", opacity: 0.25 }}
+          />
+          <ReceiptStrip
+            lines={[
+              "film notes",
+              "Varanasi 2025",
+              "dir: Shreeti A.",
+              "35mm",
+              "documentary",
+            ]}
+            style={{
+              top: "30%",
+              right: "1.5%",
+              transform: "rotate(-6deg)",
+              zIndex: 3,
+            }}
+          />
+          <NewsPageFragment
+            style={{ bottom: "22%", right: "3%", opacity: 0.12, zIndex: 0 }}
+          />
+          <HandwrittenAnnotation
+            text="field recording"
+            rotate={-5}
+            style={{
+              top: "16%",
+              left: "4%",
+              color: "rgba(245,236,216,0.45)",
+              fontSize: "13px",
+            }}
+          />
+          <GoldFoilAccent
+            variant="star"
+            style={{ top: "14px", left: "20%", opacity: 0.6 }}
+          />
+
           {/* Floating stars */}
           <motion.span
             className="absolute font-handwritten pointer-events-none"
@@ -1026,7 +1088,10 @@ export function FilmContent() {
           </div>
 
           {/* Letterboxd-style entry */}
-          <LetterboxdBlock />
+          <div style={{ position: "relative" }}>
+            <AntiquePaperFrame size={28} />
+            <LetterboxdBlock />
+          </div>
 
           {/* Extra floating arrow */}
           <motion.svg

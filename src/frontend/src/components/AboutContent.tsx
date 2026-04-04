@@ -1,5 +1,15 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import {
+  BotanicalSketch,
+  CharcoalSmudge,
+  CoffeeStainRing,
+  FoldedFlap,
+  GoldFoilAccent,
+  HandwrittenAnnotation,
+  PressedLeaf,
+  ReceiptStrip,
+} from "./ScrapbookDecorations";
 
 // ─── Shared micro-components ────────────────────────────────────────────────
 
@@ -690,6 +700,67 @@ export function AboutContent() {
       >
         ARCHIVE
       </div>
+
+      {/* ─── Scrapbook Decorations ─── */}
+      <CharcoalSmudge style={{ top: "28%", left: "12%", zIndex: 0 }} />
+      <CoffeeStainRing
+        size={72}
+        style={{ top: "32%", left: "6%", zIndex: 1 }}
+      />
+      <PressedLeaf
+        style={{ top: "18%", right: "4%", transform: "rotate(15deg)" }}
+      />
+      <PressedLeaf
+        style={{ bottom: "30%", left: "2%", transform: "rotate(-20deg)" }}
+      />
+      <PressedLeaf
+        style={{ top: "60%", right: "8%", transform: "rotate(8deg)" }}
+      />
+      <BotanicalSketch
+        size={70}
+        style={{ bottom: "15%", right: "2%", opacity: 0.2 }}
+      />
+      <FoldedFlap
+        hiddenText="things I love: manhwa, rainy days, old objects, Heath Ledger films"
+        style={{ top: "50%", right: "2%", zIndex: 8 }}
+      />
+      <HandwrittenAnnotation
+        text="✦ est. 2024"
+        rotate={-4}
+        style={{
+          top: "12%",
+          left: "3%",
+          color: "rgba(212,132,154,0.5)",
+          fontSize: "12px",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="vol. i"
+        rotate={6}
+        style={{
+          bottom: "8%",
+          right: "5%",
+          color: "rgba(157,184,157,0.5)",
+          fontSize: "13px",
+        }}
+      />
+      <GoldFoilAccent
+        variant="star"
+        style={{ top: "8%", right: "20%", opacity: 0.5 }}
+      />
+      <GoldFoilAccent
+        variant="star"
+        style={{ bottom: "20%", left: "20%", opacity: 0.4 }}
+      />
+      <ReceiptStrip
+        lines={["listening:", "in rainbows", "ok computer", "bewitched", "AM"]}
+        style={{
+          bottom: "12%",
+          left: "0.5%",
+          transform: "rotate(3deg)",
+          zIndex: 3,
+        }}
+      />
 
       {/* Floating click-reveal annotations */}
       <ClickRevealNote

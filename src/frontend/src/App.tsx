@@ -7,9 +7,15 @@ import { FilmContent } from "./components/FilmContent";
 import { type FolderConfig, FolderItem } from "./components/FolderItem";
 import { ProjectsContent } from "./components/ProjectsContent";
 import { ResearchContent } from "./components/ResearchContent";
+import {
+  GoldFoilAccent,
+  HandwrittenAnnotation,
+  InkBlot,
+  TicketStub,
+  TornPaperScrap,
+} from "./components/ScrapbookDecorations";
 
-// ─── Folder definitions ─────────────────────────────────────────────────────────────────
-
+// ─── Folder definitions ──────────────────────────────────────────────────────────────────────────────────────
 function buildFolders(): FolderConfig[] {
   return [
     {
@@ -60,7 +66,6 @@ function buildFolders(): FolderConfig[] {
       id: "contact",
       label: "Contact",
       subtitle: "send a note",
-      // Fixed: warm cream/beige instead of green
       bgColor: "#FBF5EC",
       tabColor: "#F0E6D3",
       folderImage:
@@ -71,7 +76,7 @@ function buildFolders(): FolderConfig[] {
   ];
 }
 
-// ─── Full-screen folder overlay ───────────────────────────────────────────────────────
+// ─── Full-screen folder overlay ───────────────────────────────────────────────────────────────────
 
 function FolderOverlay({
   folder,
@@ -97,7 +102,7 @@ function FolderOverlay({
     >
       {/* Paper grain */}
       <div
-        className="paper-texture"
+        className="paper-texture aged-parchment"
         style={{
           position: "absolute",
           inset: 0,
@@ -165,7 +170,7 @@ function FolderOverlay({
   );
 }
 
-// ─── Main App ────────────────────────────────────────────────────────────────────────────────────
+// ─── Main App ──────────────────────────────────────────────────────────────────────────────────────────
 
 export default function App() {
   const [openFolder, setOpenFolder] = useState<string | null>(null);
@@ -193,6 +198,83 @@ export default function App() {
       <div className="paper-bg" />
       <div className="paper-overlay" />
 
+      {/* ─── Homepage Scrapbook Decorations (behind everything) ─── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 3,
+          pointerEvents: "none",
+        }}
+      >
+        {/* Ink blots at far corners */}
+        <InkBlot
+          variant={1}
+          style={{ top: "-20px", left: "-20px", opacity: 0.7 }}
+        />
+        <InkBlot
+          variant={3}
+          style={{
+            bottom: "40px",
+            right: "-10px",
+            opacity: 0.55,
+            transform: "rotate(40deg)",
+          }}
+        />
+        {/* Torn paper scraps floating in background */}
+        <TornPaperScrap
+          variant={1}
+          style={{
+            top: "18%",
+            left: "-20px",
+            transform: "rotate(-8deg)",
+            opacity: 0.65,
+          }}
+          color="rgba(242,196,206,0.55)"
+        />
+        <TornPaperScrap
+          variant={2}
+          style={{
+            bottom: "12%",
+            left: "8%",
+            transform: "rotate(5deg)",
+            opacity: 0.5,
+          }}
+          color="rgba(197,213,197,0.5)"
+        />
+        <TornPaperScrap
+          variant={3}
+          style={{
+            top: "42%",
+            right: "-15px",
+            transform: "rotate(12deg)",
+            opacity: 0.55,
+          }}
+          color="rgba(245,236,216,0.7)"
+        />
+        <TornPaperScrap
+          variant={1}
+          style={{
+            bottom: "28%",
+            right: "6%",
+            transform: "rotate(-15deg)",
+            opacity: 0.45,
+          }}
+          color="rgba(242,196,206,0.45)"
+        />
+        {/* Ticket stub peeking in */}
+        <TicketStub
+          label="ADMIT ONE"
+          style={{
+            bottom: "38%",
+            left: "2%",
+            transform: "rotate(-12deg)",
+            opacity: 0.7,
+          }}
+        />
+      </div>
+
       {/* Main scrollable area */}
       <div
         className="relative z-20"
@@ -218,11 +300,21 @@ export default function App() {
             style={{
               textAlign: "center",
               paddingTop: "clamp(1.5rem, 4vh, 3.5rem)",
+              position: "relative",
             }}
             initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
           >
+            {/* Gold star accent near name */}
+            <GoldFoilAccent
+              variant="star"
+              style={{ top: "8px", right: "-24px" }}
+            />
+            <GoldFoilAccent
+              variant="star"
+              style={{ top: "12px", left: "-20px" }}
+            />
             <h1
               style={{
                 fontFamily: "'PrettyOnTheInside', cursive",
@@ -245,10 +337,22 @@ export default function App() {
                 fontStyle: "italic",
                 letterSpacing: "0.08em",
                 margin: 0,
+                position: "relative",
               }}
             >
               student researcher &amp; storyteller
             </p>
+            {/* Handwritten annotation near subtitle */}
+            <HandwrittenAnnotation
+              text="circa 2025 ✦"
+              rotate={-4}
+              style={{
+                bottom: "-18px",
+                right: "clamp(10px, 8%, 60px)",
+                fontSize: "12px",
+                color: "rgba(212,132,154,0.55)",
+              }}
+            />
           </motion.div>
 
           {/* Folder grid */}

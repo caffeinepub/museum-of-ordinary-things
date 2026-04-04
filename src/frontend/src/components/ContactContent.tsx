@@ -1,5 +1,13 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import {
+  AntiquePaperFrame,
+  HandwrittenAnnotation,
+  MapFragment,
+  PaperTag,
+  TornPaperScrap,
+  WatercolorWash,
+} from "./ScrapbookDecorations";
 
 // ─── Shared micro-components ────────────────────────────────────────────────
 
@@ -442,6 +450,64 @@ export function ContactContent() {
         overflowX: "hidden",
       }}
     >
+      {/* ─── Scrapbook Decorations ─── */}
+      <WatercolorWash
+        color="rgba(242,196,206,0.2)"
+        style={{ top: "10%", right: "5%", zIndex: 0 }}
+      />
+      <MapFragment style={{ bottom: "15%", left: "2%", zIndex: 0 }} />
+      <TornPaperScrap
+        variant={1}
+        style={{
+          bottom: "-10px",
+          left: "10%",
+          transform: "rotate(2deg)",
+          opacity: 0.55,
+          zIndex: 1,
+        }}
+        color="rgba(245,236,216,0.75)"
+      />
+      <TornPaperScrap
+        variant={3}
+        style={{
+          top: "5%",
+          right: "-10px",
+          transform: "rotate(-8deg)",
+          opacity: 0.45,
+          zIndex: 1,
+        }}
+        color="rgba(242,196,206,0.5)"
+      />
+      <HandwrittenAnnotation
+        text="✉ write back"
+        rotate={-5}
+        style={{
+          top: "5%",
+          left: "4%",
+          color: "rgba(180,140,110,0.5)",
+          fontSize: "12px",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="with care"
+        rotate={7}
+        style={{
+          bottom: "8%",
+          right: "4%",
+          color: "rgba(180,140,110,0.45)",
+          fontSize: "11px",
+        }}
+      />
+      <PaperTag
+        text="reply to:"
+        style={{
+          top: "20%",
+          left: "1.5%",
+          transform: "rotate(-4deg)",
+          zIndex: 3,
+        }}
+      />
+
       {/* Floating annotations */}
       <ClickRevealNote
         note="drop a line"
@@ -608,6 +674,7 @@ export function ContactContent() {
             </svg>
 
             {/* Inner letter card — tilted -2deg */}
+            <AntiquePaperFrame size={26} style={{ zIndex: 4 }} />
             <motion.div
               style={{
                 background: "#FFF8F0",

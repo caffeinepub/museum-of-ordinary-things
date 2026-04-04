@@ -1,5 +1,15 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import {
+  BotanicalSketch,
+  CrosshatchBorder,
+  FoldedFlap,
+  GoldFoilAccent,
+  HandwrittenAnnotation,
+  LibraryCard,
+  TornPaperScrap,
+  TypewriterStripBg,
+} from "./ScrapbookDecorations";
 
 // ─── Shared micro-components ────────────────────────────────────────────────
 
@@ -953,6 +963,89 @@ export function ResearchContent() {
       }}
     >
       <TornEdge />
+
+      {/* ─── Scrapbook Decorations ─── */}
+      <TypewriterStripBg
+        text="research · field notes · bibliography · annotations · essays ·"
+        style={{ top: "60%", left: 0, width: "100%" }}
+      />
+      <TornPaperScrap
+        variant={1}
+        style={{
+          top: "-10px",
+          right: "10%",
+          transform: "rotate(3deg)",
+          opacity: 0.5,
+          zIndex: 1,
+        }}
+        color="rgba(245,236,216,0.7)"
+      />
+      <TornPaperScrap
+        variant={3}
+        style={{
+          bottom: "-10px",
+          left: "15%",
+          transform: "rotate(-4deg)",
+          opacity: 0.45,
+          zIndex: 1,
+        }}
+        color="rgba(197,213,197,0.4)"
+      />
+      <LibraryCard
+        style={{
+          top: "35px",
+          right: "3%",
+          zIndex: 3,
+          transform: "rotate(-4deg)",
+        }}
+      />
+      <FoldedFlap
+        hiddenText="reading list: ↓ Sontag / Berger / Woolf"
+        style={{ bottom: "25%", left: "2%", zIndex: 8 }}
+      />
+      <BotanicalSketch
+        size={75}
+        style={{ bottom: "12%", right: "3%", opacity: 0.22 }}
+      />
+      <CrosshatchBorder
+        width={14}
+        height={250}
+        style={{ top: "15%", left: "1%", zIndex: 1 }}
+      />
+      <HandwrittenAnnotation
+        text="see also →"
+        rotate={-5}
+        style={{
+          top: "22%",
+          right: "4%",
+          color: "rgba(157,184,157,0.6)",
+          fontSize: "12px",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="ref."
+        rotate={8}
+        style={{
+          top: "45%",
+          left: "3%",
+          color: "rgba(61,43,43,0.35)",
+          fontSize: "14px",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="important!"
+        rotate={-6}
+        style={{
+          top: "55%",
+          right: "3%",
+          color: "rgba(212,132,154,0.5)",
+          fontSize: "12px",
+        }}
+      />
+      <GoldFoilAccent
+        variant="corner"
+        style={{ top: "8px", right: "40%", opacity: 0.5 }}
+      />
 
       {/* Floating annotations */}
       <ClickRevealNote

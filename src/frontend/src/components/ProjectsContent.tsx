@@ -1,5 +1,18 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import {
+  BotanicalSketch,
+  CrosshatchBorder,
+  FoldedFlap,
+  GoldFoilAccent,
+  HandwrittenAnnotation,
+  LaceDivider,
+  LibraryCard,
+  MagazineCutout,
+  PaperTag,
+  TornPaperScrap,
+  TypewriterStripBg,
+} from "./ScrapbookDecorations";
 
 // ─── Shared micro-components ────────────────────────────────────────────────
 
@@ -906,6 +919,90 @@ export function ProjectsContent() {
     >
       <TornEdge />
 
+      {/* ─── Scrapbook Decorations ─── */}
+      <MagazineCutout
+        text="PROJECTS"
+        style={{
+          top: "5%",
+          left: "-2%",
+          transform: "rotate(-6deg)",
+          fontSize: "5rem",
+          opacity: 0.05,
+        }}
+      />
+      <MagazineCutout
+        text="ARCHIVE"
+        style={{
+          bottom: "10%",
+          right: "-2%",
+          transform: "rotate(4deg)",
+          fontSize: "4rem",
+          opacity: 0.04,
+        }}
+      />
+      <TypewriterStripBg
+        text="field notes · projects · archive · catalogue · works ·"
+        style={{ top: "55%", left: 0, width: "100%" }}
+      />
+      <TornPaperScrap
+        variant={2}
+        style={{
+          top: "30%",
+          left: "-15px",
+          transform: "rotate(-5deg)",
+          opacity: 0.5,
+          zIndex: 1,
+        }}
+        color="rgba(242,196,206,0.45)"
+      />
+      <TornPaperScrap
+        variant={3}
+        style={{
+          bottom: "18%",
+          right: "-10px",
+          transform: "rotate(8deg)",
+          opacity: 0.45,
+          zIndex: 1,
+        }}
+        color="rgba(197,213,197,0.4)"
+      />
+      <LibraryCard
+        style={{
+          top: "40px",
+          right: "2%",
+          zIndex: 3,
+          transform: "rotate(3deg)",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="!! check this out"
+        rotate={-7}
+        style={{
+          top: "30px",
+          left: "4%",
+          color: "rgba(212,132,154,0.55)",
+          fontSize: "12px",
+        }}
+      />
+      <HandwrittenAnnotation
+        text="est. 2024"
+        rotate={4}
+        style={{
+          bottom: "60px",
+          left: "3%",
+          color: "rgba(157,184,157,0.55)",
+          fontSize: "11px",
+        }}
+      />
+      <GoldFoilAccent
+        variant="corner"
+        style={{ top: "8px", right: "25%", opacity: 0.5 }}
+      />
+      <CrosshatchBorder
+        width={16}
+        height={200}
+        style={{ top: "20%", left: "1.5%", zIndex: 1 }}
+      />
       <div
         style={{
           maxWidth: "960px",
@@ -1066,7 +1163,26 @@ export function ProjectsContent() {
           />
         </div>
 
+        {/* Lace divider between Museum card area and side cards */}
+        <LaceDivider style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }} />
+
+        {/* Folded flap easter egg */}
+        <FoldedFlap
+          hiddenText="a personal archive ↗"
+          style={{ position: "absolute", bottom: "100px", left: "2%" }}
+        />
+        <PaperTag
+          text="glow & grow"
+          style={{
+            position: "absolute",
+            bottom: "130px",
+            right: "2.5%",
+            transform: "rotate(8deg)",
+          }}
+        />
+
         {/* Binder rings strip */}
+
         <div
           style={{
             display: "flex",
