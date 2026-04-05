@@ -423,7 +423,12 @@ function LifeStoriesPanel() {
 const _albums = [
   { title: "In Rainbows", artist: "Radiohead", bg: "#C5D5C5", rotate: "-3deg" },
   { title: "OK Computer", artist: "Radiohead", bg: "#F2C4CE", rotate: "2deg" },
-  { title: "Bewitched", artist: "Laufey", bg: "#F7D9E0", rotate: "-1.5deg" },
+  {
+    title: "Graduation",
+    artist: "Kanye West",
+    bg: "#C8B8D8",
+    rotate: "-1.5deg",
+  },
   { title: "AM", artist: "Arctic Monkeys", bg: "#F0E6D3", rotate: "3deg" },
   {
     title: "Favourite Worst Nightmare",
@@ -589,10 +594,10 @@ function RedditStories() {
           }}
         >
           <p style={{ marginBottom: "8px" }}>
-            okay so i was just trying to write about my grandmother's old
+            okay so i was just trying to write about my grandmother’s old
             kitchen tin and now somehow i have an entire research project about
-            "the social memory of domestic objects." i don't know how this
-            happened. i don't ask questions anymore.
+            “the social memory of domestic objects.” i don’t know how this
+            happened. i don’t ask questions anymore.
           </p>
           <p style={{ marginBottom: "8px" }}>
             also currently on my 4th manhwa this week. no i am not okay. yes i
@@ -601,7 +606,7 @@ function RedditStories() {
           </p>
           <p>
             anyway if you see me in the library staring at a spoon like it
-            contains the secrets of the universe — yes that is on purpose. it's
+            contains the secrets of the universe — yes that is on purpose. it’s
             called fieldwork.
           </p>
         </div>
@@ -725,7 +730,7 @@ export function AboutContent() {
         style={{ top: "50%", right: "2%", zIndex: 8 }}
       />
       <HandwrittenAnnotation
-        text="✦ est. 2024"
+        text="❖ est. 2024"
         rotate={-4}
         style={{
           top: "12%",
@@ -753,7 +758,7 @@ export function AboutContent() {
         style={{ bottom: "20%", left: "20%", opacity: 0.4 }}
       />
       <ReceiptStrip
-        lines={["listening:", "in rainbows", "ok computer", "bewitched", "AM"]}
+        lines={["listening:", "in rainbows", "ok computer", "graduation", "AM"]}
         style={{
           bottom: "12%",
           left: "0.5%",
