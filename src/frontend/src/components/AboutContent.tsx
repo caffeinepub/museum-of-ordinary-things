@@ -350,10 +350,10 @@ function ClickablePhoto({
 // ─── Life Stories fragments ────────────────────────────────────────────────
 
 const lifeFragments = [
-  "grew up reading manhwa — i genuinely wish it was my full-time job",
-  "Heath Ledger is my forever crush. no further explanation needed.",
-  "stories live in objects. in the ordinary.",
-  "always in the middle of three notebooks at once",
+  "I grew up reading manhwa — not just for the stories, but for the way they build entire emotional worlds quietly. I still return to them more often than I admit.",
+  "There's something about certain performances that stays with you longer than expected. Heath Ledger is one of those — it's less a favorite, more something that lingers.",
+  "I keep coming back to the idea that stories don't only belong to people. Objects carry them too, in quieter ways.",
+  "I'm almost always moving between multiple notebooks; different thoughts, different fragments, rarely in one place.",
 ];
 
 function LifeStoriesPanel() {
@@ -594,20 +594,19 @@ function RedditStories() {
           }}
         >
           <p style={{ marginBottom: "8px" }}>
-            okay so i was just trying to write about my grandmother’s old
-            kitchen tin and now somehow i have an entire research project about
-            “the social memory of domestic objects.” i don’t know how this
-            happened. i don’t ask questions anymore.
+            I started by trying to write about something small — my
+            grandmother’s kitchen tin — and it slowly became something else. I
+            found myself paying attention to objects in a way I hadn’t before,
+            thinking about what they carry, what stays with them.
           </p>
           <p style={{ marginBottom: "8px" }}>
-            also currently on my 4th manhwa this week. no i am not okay. yes i
-            did cancel plans for this. the plot physically needed me there. i
-            have responsibilities.
+            Now I tend to notice things I would have ignored earlier. The way
+            something is used, where it has been, what it might hold onto. It’s
+            less about finding answers and more about staying with the question.
           </p>
           <p>
-            anyway if you see me in the library staring at a spoon like it
-            contains the secrets of the universe — yes that is on purpose. it’s
-            called fieldwork.
+            Sometimes that just looks like sitting somewhere and observing,
+            letting ordinary things take their time to mean something.
           </p>
         </div>
 
